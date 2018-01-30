@@ -1,0 +1,585 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>
+    window.onload = function () {
+        var coreCompnentsChart = new CanvasJS.Chart("coreCompnentsChart", {
+            title: {
+                text: "Headcount Analysis"
+            },
+            animationEnabled: true,
+            legend: {
+                cursor: "pointer",
+                itemclick: function (e) {
+                    if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                        e.dataSeries.visible = false;
+                    }
+                    else {
+                        e.dataSeries.visible = true;
+                    }
+                    chart.render();
+                }
+            },
+            axisY: {
+                valueFontSize: 5
+            },
+            axisX: {
+                valueFontSize: 5
+            },
+            toolTip: {
+                shared: true,
+                content: function (e) {
+                    var str = '';
+                    var total = 0;
+                    var str3;
+                    var str2;
+                    for (var i = 0; i < e.entries.length; i++) {
+                        var str1 = "<span style= 'color:" + e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong>" + e.entries[i].dataPoint.y + "</strong> <br/>";
+                        total = e.entries[i].dataPoint.y + total;
+                        str = str.concat(str1);
+                    }
+                    str2 = "<span style = 'color:DodgerBlue; '><strong>" + e.entries[0].dataPoint.label + "</strong></span><br/>";
+                    str3 = "<span style = 'color:Tomato '>Total: </span><strong>" + total + "</strong><br/>";
+
+                    return (str2.concat(str));
+                }
+
+            },
+            data: [
+            {
+                type: "bar",
+                showInLegend: true,
+                name: "Headcount Required",
+                dataPoints: [
+                    { y: 1192, label: "Jan" },
+                    { y: 1865, label: "Feb" },
+                    { y: 2675, label: "Mar" },
+                    { y: 2675, label: "Apr" },
+                    { y: 2675, label: "May" },
+                    { y: 3050, label: "Jun" },
+                    { y: 3050, label: "Jul" },
+                    { y: 3050, label: "Aug" },
+                    { y: 3050, label: "Sep" },
+                    { y: 3050, label: "Oct" },
+                    { y: 3050, label: "Nov" },
+                    { y: 3050, label: "Dec" }
+                ],
+
+                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+            },
+            { //1.528	2.391	3.429	3.429	3.429	3.910	3.910	3.910	3.910	3.910	3.910	3.910
+
+                type: "bar",
+                showInLegend: true,
+                name: "22% Shrikange Headcount",
+                dataPoints: [
+                    { y: 1528, label: "Jan" },
+                    { y: 2391, label: "Feb" },
+                    { y: 3429, label: "Mar" },
+                    { y: 3429, label: "Apr" },
+                    { y: 3429, label: "May" },
+                    { y: 3910, label: "Jun" },
+                    { y: 3910, label: "Jul" },
+                    { y: 3910, label: "Aug" },
+                    { y: 3910, label: "Sep" },
+                    { y: 3910, label: "Oct" },
+                    { y: 3910, label: "Nov" },
+                    { y: 3910, label: "Dec" }
+                ],
+
+                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+            },
+            {
+                //1.356	2.382	4.204	4.728	4.786	5.205	5.154	5.115	5.065	5.015	4.977	4.940
+
+
+                type: "bar",
+                showInLegend: true,
+                name: "Actual VEs (3% Attrition)",
+                dataPoints: [
+                   { y: 1356, label: "Jan" },
+                    { y: 2382, label: "Feb" },
+                    { y: 4204, label: "Mar" },
+                    { y: 4728, label: "Apr" },
+                    { y: 4786, label: "May" },
+                    { y: 5205, label: "Jun" },
+                    { y: 5154, label: "Jul" },
+                    { y: 5115, label: "Aug" },
+                    { y: 5065, label: "Sep" },
+                    { y: 5015, label: "Oct" },
+                    { y: 4977, label: "Nov" },
+                    { y: 4940, label: "Dec" }
+                ],
+
+                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+            },
+            {
+                // 282	1.172	2.054	720	220	571	114	125	111	110	121	120
+
+                type: "bar",
+                showInLegend: true,
+                name: "Planned Recuritment",
+                dataPoints: [
+                   { y: 282, label: "Jan" },
+                    { y: 1172, label: "Feb" },
+                    { y: 2054, label: "Mar" },
+                    { y: 720, label: "Apr" },
+                    { y: 220, label: "May" },
+                    { y: 571, label: "Jun" },
+                    { y: 114, label: "Jul" },
+                    { y: 125, label: "Aug" },
+                    { y: 111, label: "Sep" },
+                    { y: 110, label: "Oct" },
+                    { y: 121, label: "Nov" },
+                    { y: 120, label: "Dec" }
+                ],
+
+                //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                //dataPoints: @Html.Raw(ViewBag.DataPoints),
+            },
+             {
+                 // 172	109	74	71	69	85	84	85	82	83	79	81
+
+
+                 type: "bar",
+                 showInLegend: true,
+                 name: "Shortage",
+                 dataPoints: [
+                    { y: 172, label: "Jan" },
+                     { y: 109, label: "Feb" },
+                     { y: 74, label: "Mar" },
+                     { y: 71, label: "Apr" },
+                     { y: 69, label: "May" },
+                     { y: 85, label: "Jun" },
+                     { y: 84, label: "Jul" },
+                     { y: 85, label: "Aug" },
+                     { y: 82, label: "Sep" },
+                     { y: 83, label: "Oct" },
+                     { y: 79, label: "Nov" },
+                     { y: 81, label: "Dec" }
+                 ],
+
+                 //You can add dynamic data from the controller as shown below. Check the controller and uncomment the line which generates dataPoints.
+                 //dataPoints: @Html.Raw(ViewBag.DataPoints),
+             }
+
+            ]
+        });
+
+        coreCompnentsChart.render();
+
+        var chart = new CanvasJS.Chart("chartContainer",
+    {
+        title:{
+            text: "Capacity GAP"
+
+        },
+        toolTip: {
+            shared: true,
+            content: function (e) {
+                var str = '';
+                var total = 0;
+                var str3;
+                var str2;
+                for (var i = 0; i < e.entries.length; i++) {
+                    var str1 = "<span style= 'color:" + e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong> " + e.entries[i].dataPoint.y + "</strong> <br/>";
+                    total = e.entries[i].dataPoint.y + total;
+                    str = str.concat(str1);
+                }
+                str2 = "<span style = 'color:DodgerBlue; '><strong> Date: " + e.entries[0].dataPoint.label + "</strong></span><br/>";
+                str3 = "<span style = 'color:Tomato '>Total: </span><strong>" + total + "</strong><br/>";
+
+                return (str2.concat(str));
+            }
+
+        },
+        data: [{
+            type: "line",
+            showInLegend: true,
+            name: "Excepted",
+            dataPoints:
+                [
+                    { y: 400000, label: "Jan" },
+                     { y: 500000, label: "Feb" },
+                     { y: 600000, label: "Mar" },
+                     { y: 650000, label: "Apr" },
+                     { y: 700000, label: "May" },
+                     { y: 750000, label: "Jun" },
+                     { y: 800000, label: "Jul" },
+                     { y: 850000, label: "Aug" },
+                     { y: 900000, label: "Sep" },
+                     { y: 900000, label: "Oct" },
+                     { y: 950000, label: "Nov" },
+                     { y: 1000000, label: "Dec" }
+                ],
+        },
+        {
+            type: "line",
+            showInLegend: true,
+            name: "Max Capacity",
+            dataPoints:[
+                    { y: 337620, label: "Jan" },
+                     { y: 431019, label: "Feb" },
+                     { y: 596138, label: "Mar" },
+                     { y: 609197, label: "Apr" },
+                     { y: 637596, label: "May" },
+                     { y: 779851 , label: "Jun" },
+                     { y: 926634 , label: "Jul" },
+                     { y: 979683 , label: "Aug" },
+                     { y: 997913, label: "Sep" },
+                     { y: 1008145, label: "Oct" },
+                     { y: 1009817, label: "Nov" },
+                     { y: 1010329, label: "Dec" }
+                ],
+        },
+        {
+            type: "line",
+            showInLegend: true,
+            name: "Max",
+            dataPoints:[
+                    { y: 299615, label: "Jan" },
+                     { y: 429469, label: "Feb" },
+                     { y: 730796, label: "Mar" },
+                     { y: 839864, label: "Apr" },
+                     { y: 889828, label: "May" },
+                     { y: 1037992, label: "Jun" },
+                     { y: 1221480, label: "Jul" },
+                     { y: 1281604, label: "Aug" },
+                     { y: 1292703, label: "Sep" },
+                     { y: 1293077, label: "Oct" },
+                     { y: 1285417, label: "Nov" },
+                     { y: 1276295, label: "Dec" }
+                ],
+        },
+        {
+            type: "line",
+            showInLegend: true,
+            name: "GAP (Expected - Actual)",
+            dataPoints:[
+                    { y: -100385, label: "Jan" },
+                     { y: -70531, label: "Feb" },
+                     { y: 130796, label: "Mar" },
+                     { y: 189864, label: "Apr" },
+                     { y: 189828, label: "May" },
+                     { y: 287992, label: "Jun" },
+                     { y: 421480, label: "Jul" },
+                     { y: 431604, label: "Aug" },
+                     { y: 392703, label: "Sep" },
+                     { y: 393077, label: "Oct" },
+                     { y: 335417, label: "Nov" },
+                     { y: 276295, label: "Dec" }
+                ],
+        }
+        ]
+    });
+
+        chart.render();
+    }
+</script>
+<!--overview start-->
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="#">Home</a></li>
+            <li><i class="fa fa-laptop"></i>Dashboard</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box blue-bg">
+            <i class="fa fa-cloud-download"></i>
+            <div class="count">430,4959</div>
+            <div class="title">Finance Forecast</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box brown-bg">
+            <i class="fa fa-shopping-cart"></i>
+            <div class="count">4,917,114</div>
+            <div class="title">Ops Forecast</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box dark-bg">
+            <i class="fa fa-thumbs-o-up"></i>
+            <div class="count">12,000,000</div>
+            <div class="title">Increased OPS</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box green-bg">
+            <i class="fa fa-cubes"></i>
+            <div class="count">400,000</div>
+            <div class="title">Avg Volume</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+
+</div>
+<div class="row">
+    <!-- chart morris start -->
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h3>Forecast</Char>
+            </header>
+            <div class="panel-body">
+                <div class="tab-pane" id="chartjs">
+                    <div class="row">
+                        <!-- Line -->
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <div class="panel-body text-center">
+                                    <div id="coreCompnentsChart" style="height: 550px; width: 100%;"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Radar -->
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <div class="panel-body text-center">
+                                    <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+                                </div>
+                            </section>
+                        </div>
+                        <!-- Polar Area -->
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2><i class="fa fa-flag-o red"></i><strong>Vacant Postions</strong></h2>
+                                <div class="panel-actions">
+                                    <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                                    <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                                    <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table bootstrap-datatable countries">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Jan</th>
+                                            <th>Feb</th>
+                                            <th>Mar</th>
+                                            <th>Apr</th>
+                                            <th>May</th>
+                                            <th>Jun</th>
+                                            <th>Jul</th>
+                                            <th>Aug</th>
+                                            <th>Sep</th>
+                                            <th>Oct</th>
+                                            <th>Nov</th>
+                                            <th>Dec</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jaipur</td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Udaipur</td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-success " role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                            <td>
+                                                <div class="progress thin">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                                <span class="sr-only">60%</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script src="~/Scripts/chartjs-custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Scripts/canvasjs.min.js"></script>

@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Capacity Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/Content/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/owl.carousel.css" type="text/css">
+    <link href="~/Content/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="~/Content/fullcalendar.css">
+    <link href="~/Content/widgets.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/xcharts.min.css" rel=" stylesheet">
+    <link href="~/Content/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="~/Scripts/jquery.scrollTo.min.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- chartjs -->
+    <script src="~/Scripts/Chart.js"></script>
+    <!-- custom chart script for this page only-->
+    <!--custome script for all page-->
+    <script src="~/Scripts/scripts.js"></script>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <section id="container" class="">
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+
+            <a href="index.html" class="logo">Capacity <span class="lite">Management</span></a>
+
+            <div class="nav search-row" id="top_menu">
+                <!--  search form start -->
+                <ul class="nav top-menu">
+                    <li>
+                        <form class="navbar-form">
+                            <input class="form-control" placeholder="Search" type="text">
+                        </form>
+                    </li>
+                </ul>
+                <!--  search form end -->
+            </div>
+
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+
+                    <!-- inbox notificatoin start-->
+                    <li id="mail_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-envelope-l"></i>
+                            <span class="badge bg-important">3</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">You have 3 new messages</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="subject">
+                                        <span class="from">Chandhar</span>
+                                        <span class="time">1 min</span>
+                                    </span>
+                                    <span class="message">
+                                        2 People hiring starts tomorrow.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="subject">
+                                        <span class="from">Praveen</span>
+                                        <span class="time">5 mins</span>
+                                    </span>
+                                    <span class="message">
+                                        Roaster Management is picking up
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="subject">
+                                        <span class="from">Raju</span>
+                                        <span class="time">2 hrs</span>
+                                    </span>
+                                    <span class="message">
+                                        Required 10 head count to cope up<br /> with current volumes
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox notificatoin end -->
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">Praveen</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Dashboards</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="@Url.Action("Index", "Home",null)">Monthly</a></li>
+                            <li><a class="" href="@Url.Action("Weekly", "Home",null)">Weekly</a></li>
+                            <li><a class="" href="@Url.Action("Dialy", "Home",null)">Daily</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("About", "Home",null)">
+                            <i class="icon_document_alt"></i>
+                            <span>Office</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Forecast",null)" class="">
+                            <i class="icon_documents_alt"></i>
+                            <span>Forecast</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Contact", "Home",null)" class="">
+                            <i class="icon_table"></i>
+                            <span>Roaster</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Contact", "Home",null)" class="">
+                            <i class="icon_genius"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <section id="main-content">
+            <div class="container body-content">
+                @RenderBody()
+
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Capacity Management copyrights</p>
+                </footer>
+            </div>
+            </section>
+               
+          
+            
+        </section>
+</body>
+</html>

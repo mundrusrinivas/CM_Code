@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Forecast";
+}
+
+
+ <script type="text/javascript">
+     window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "Forecast"
+
+      },
+      toolTip: {
+          shared: true,
+          content: function (e) {
+              var str = '';
+              var total = 0;
+              var str3;
+              var str2;
+              for (var i = 0; i < e.entries.length; i++) {
+                  var str1 = "<span style= 'color:" + e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong> " + e.entries[i].dataPoint.y + "</strong> <br/>";
+                  total = e.entries[i].dataPoint.y + total;
+                  str = str.concat(str1);
+              }
+              str2 = "<span style = 'color:DodgerBlue; '><strong> Date: " + e.entries[0].dataPoint.label + "</strong></span><br/>";
+              str3 = "<span style = 'color:Tomato '>Total: </span><strong>" + total + "</strong><br/>";
+
+              return (str2.concat(str));
+          }
+
+      },
+      data: [{
+          type: "line",
+          showInLegend: true,
+          name: "Forecast",
+          dataPoints:@Html.Raw(ViewBag.DataPoints1),
+      },
+      {
+          type: "line",
+          showInLegend: true,
+          name: "Min",
+          dataPoints:@Html.Raw(ViewBag.DataPoints2),
+      },
+      {
+          type: "line",
+          showInLegend: true,
+          name: "Max",
+          dataPoints:@Html.Raw(ViewBag.DataPoints3),
+      },
+      {
+          type: "line",
+          showInLegend: true,
+          name: "Actual",
+          dataPoints:@Html.Raw(ViewBag.DataPoints4),
+      }
+      ]
+    });
+
+    chart.render();
+  }
+    </script>
+    <script type="text/javascript" src="~/Scripts/canvasjs.min.js"></script>
+ <!--overview start-->
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i> Forecast</h3>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="#">Home</a></li>
+            <li><i class="fa fa-laptop"></i>Forecast</li>
+        </ol>
+    </div>
+</div>
+    <div id="chartContainer" style="height: 600px; width: 100%;">
+    </div>
